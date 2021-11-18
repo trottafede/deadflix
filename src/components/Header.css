@@ -1,0 +1,219 @@
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  #imgContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  header {
+    margin-bottom: 50px;
+  }
+  header h1 {
+    color: #fff;
+    text-align: center;
+  }
+
+  #searcherContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 15%;
+  }
+
+  header label {
+    color: #fff;
+  }
+
+  header .imgBg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: url("https://cdn.pixabay.com/photo/2019/08/01/03/39/animals-4376546_960_720.png")
+      no-repeat center/contain;
+    height: 400px;
+    width: 100%;
+  }
+  .starColor {
+    color: gold;
+  }
+  .ratingContainer {
+    display: flex;
+    justify-content: center;
+  }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  #imgContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  header {
+    margin-bottom: 50px;
+  }
+  header h1 {
+    color: #fff;
+    text-align: center;
+  }
+
+  #searcherContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 15%;
+  }
+
+  header label {
+    color: #fff;
+  }
+
+  header .imgBg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: url("https://cdn.pixabay.com/photo/2019/08/01/03/39/animals-4376546_960_720.png")
+      no-repeat center/contain;
+    height: 400px;
+    width: 100%;
+  }
+  .starColor {
+    color: gold;
+  }
+  .ratingContainer {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  #imgContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  header {
+    margin-bottom: 50px;
+  }
+  header h1 {
+    color: #fff;
+    text-align: center;
+  }
+
+  #searcherContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 25%;
+  }
+
+  header label {
+    color: #fff;
+  }
+
+  header .imgBg {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    background: url("https://cdn.pixabay.com/photo/2019/08/01/03/39/animals-4376546_960_720.png")
+      no-repeat center/contain;
+    height: 500px;
+    width: 1100px;
+    background-repeat: no-repeat;
+  }
+  .starColor {
+    color: gold;
+  }
+  .ratingContainer {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #imgContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  header nav li {
+    margin-left: 30px;
+  }
+  header {
+    margin-bottom: 50px;
+  }
+  header h1 {
+    color: #fff;
+    text-align: center;
+  }
+
+  #searcherContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 14%;
+  }
+
+  header label {
+    color: #fff;
+  }
+
+  header .imgBg {
+    background: url("https://cdn.pixabay.com/photo/2019/08/01/03/39/animals-4376546_960_720.png")
+      no-repeat center/contain;
+    height: 500px;
+    width: 1100px;
+    background-repeat: no-repeat;
+  }
+  .starColor {
+    color: gold;
+  }
+  .ratingContainer {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  #imgContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  header nav li {
+    margin-left: 30px;
+  }
+  header {
+    margin-bottom: 50px;
+  }
+  header h1 {
+    color: #fff;
+    text-align: center;
+  }
+
+  #searcherContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 14%;
+  }
+
+  header label {
+    color: #fff;
+  }
+
+  header .imgBg {
+    background: url("https://cdn.pixabay.com/photo/2019/08/01/03/39/animals-4376546_960_720.png")
+      no-repeat center/contain;
+    height: 500px;
+    width: 1100px;
+    background-repeat: no-repeat;
+  }
+  .starColor {
+    color: gold;
+  }
+  .ratingContainer {
+    display: flex;
+    justify-content: center;
+  }
+}
