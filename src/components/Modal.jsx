@@ -25,10 +25,7 @@ function Modal({ modal, title, year, image, overview }) {
 
           <div className="modal-body">
             <h6>{year}</h6>
-            <img
-              src={"https://image.tmdb.org/t/p/original/" + image}
-              alt={title}
-            />
+            <img src={image} alt={title} />
             <p>{overview}</p>
           </div>
 
