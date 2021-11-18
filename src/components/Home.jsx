@@ -1,20 +1,21 @@
-import "./Home.css";
+import "../css/Home.css";
 import Movie from "./Movie";
 import Header from "./Header";
 import React from "react";
 import axios from "axios";
+import NoMovieFound from "./NoMovieFound";
 
 function Home() {
-  const [search, setSearch] = React.useState("");
+  const [title, setTitle] = React.useState("");
   const [ratingValue, setRatingValue] = React.useState(0);
   const [movieList, setMovieList] = React.useState([]);
   const [pageNumber, setPageNumber] = React.useState(1);
 
-  let list;
-  let filteredMovies;
-
   React.useEffect(() => {
-    let url = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNumber}&with_watch_monetization_types=flatrate`;
+    const url =
+      title.length <= 0
+        ? `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNumber}&with_watch_monetization_types=flatrate`
+        : `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${title}&page=${pageNumber}&include_adult=false`;
     axios
       .get(url)
       .then(function (response) {
@@ -29,75 +30,58 @@ function Home() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [pageNumber]);
+  }, [pageNumber, title]);
+  console.log(movieList);
 
-  React.useEffect(() => {
+  const handleSearch = (inputTitle) => {
+    // setRatingValue(0);
+    setMovieList([]);
     setPageNumber(1);
-  }, [ratingValue, search]);
-  // if (ratingValue !== 0) {
-  //   filteredMovies = movieList.filter((movie) => {
-  //     console.log("filtered movies by rating");
-  //     return movie.vote_average >= ratingValue * 2;
-  //   });
-  // } else if (search !== "") {
-  //   filteredMovies = movieList.filter((movie) => {
-  //     console.log("filtered movies");
-  //     return movie.title.toLowerCase().includes(search.toLowerCase());
-  //   });
-  // }
+    console.log(inputTitle);
 
-  list = movieList.map((movie) => {
-    console.log("Map de movielist traidos de api");
-    return (
-      <Movie
-        key={movie.id}
-        id={movie.id}
-        overview={movie.overview}
-        title={movie.title}
-        image={"https://image.tmdb.org/t/p/original" + movie.poster_path}
-        year={movie.release_date}
-      />
-    );
-  });
-  // list = (
-  //     <Movie
-  //       key={1}
-  //       id={53}
-  //       overview={"No hay esto wei"}
-  //       title={"No hay eso wei"}
-  //       image={
-  //         "https://cdn.pixabay.com/photo/2015/01/11/07/03/moe-595955_960_720.png"
-  //       }
-  //     />
-  //   ));
-
-  const searchMovie = (movie) => {
-    setRatingValue(0);
-    setSearch(movie.toLowerCase());
+    setTitle(inputTitle);
   };
 
   const handleRating = (rating) => {
     console.log(rating);
-    setSearch("");
+    setTitle("");
     setRatingValue(rating);
   };
 
   const handleScroll = () => {
     if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
-      console.log("Estas en scroll");
+      console.log("Sumando +1 a page");
       setPageNumber((number) => number + 1);
     }
   };
   return (
     <div>
       <Header
-        search={search}
-        searchMovie={searchMovie}
+        title={title}
+        handleSearch={handleSearch}
         handleRating={handleRating}
         ratingValue={ratingValue}
       />
       <div className="container">
-        <div className="row">{list}</div>
+        <div className="row">
+          {movieList.length > 0 ? (
+            movieList.map((movie) => {
+              console.log("map en el return de movielist");
+              return (
+                <Movie
+                  key={movie.id}
+                  id={movie.id}
+                  overview={movie.overview}
+                  title={movie.title}
+                  image={movie.poster_path}
+                  year={movie.release_date}
+                />
+              );
+            })
+          ) : (
+            <NoMovieFound />
+          )}
+        </div>
       </div>
     </div>
   );

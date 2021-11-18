@@ -1,8 +1,8 @@
-import "./Header.css";
+import "../css/Header.css";
 import Search from "./Search";
 import Rating from "react-rating";
 import React from "react";
-function Header({ search, searchMovie, handleRating, ratingValue }) {
+function Header({ title, handleSearch, handleRating, ratingValue }) {
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-dark">
@@ -42,7 +42,7 @@ function Header({ search, searchMovie, handleRating, ratingValue }) {
         <div className="imgBg ">
           <h1>¡Tus peliculas favoritas!</h1>
           <div id="searcherContainer" className="mb-3">
-            <Search search={search} searchMovie={searchMovie} />
+            <Search title={title} handleSearch={handleSearch} />
           </div>
         </div>
       </div>

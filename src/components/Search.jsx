@@ -1,6 +1,6 @@
-function Search({ search, searchMovie }) {
+function Search({ title, handleSearch }) {
   const handleInput = (e) => {
-    searchMovie(e.target.value);
+    handleSearch(e.target.value.toLowerCase());
   };
 
   return (
@@ -10,8 +10,8 @@ function Search({ search, searchMovie }) {
       </label>
       <input
         autoComplete="off"
-        onInput={handleInput}
-        value={search}
+        onChange={handleInput}
+        value={title}
         id="searcher"
         placeholder="Search"
         type="email"

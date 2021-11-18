@@ -1,8 +1,13 @@
 import React from "react";
-import "./Movie.css";
+import "../css/Movie.css";
 import Modal from "./Modal";
-function Movie({ id, title, overview, year, image }) {
+
+export default function Movie({ id, title, overview, year, image }) {
   const modal = `modal${id}`;
+  const imageToRender = image
+    ? "https://image.tmdb.org/t/p/original" + image
+    : "https://cdn.pixabay.com/photo/2015/01/11/07/03/moe-595955_960_720.png";
+
   return (
     <div
       data-bs-toggle="modal"
@@ -11,17 +16,15 @@ function Movie({ id, title, overview, year, image }) {
     >
       <h3>{title.length >= 14 ? title.substring(0, 18) : title}</h3>
       <div className="imgContainer">
-        <img src={image} alt={title} />
+        <img src={imageToRender} alt={title} />
       </div>
       <Modal
         modal={modal}
         title={title}
         year={year}
-        image={image}
+        image={imageToRender}
         overview={overview}
       />
     </div>
   );
 }
-
-export default Movie;
