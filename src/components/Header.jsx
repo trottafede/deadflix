@@ -3,6 +3,10 @@ import Search from "./Search";
 import Rating from "react-rating";
 import React from "react";
 function Header({ title, handleSearch, handleRating, ratingValue }) {
+  const handleClick = (rating) => {
+    rating = rating * 2;
+    handleRating(rating);
+  };
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-dark">
@@ -50,7 +54,7 @@ function Header({ title, handleSearch, handleRating, ratingValue }) {
       <div className="ratingContainer">
         {!title && (
           <Rating
-            onClick={handleRating}
+            onClick={handleClick}
             initialRating={ratingValue}
             className="starColor"
             emptySymbol="far fa-star fa-2x"
