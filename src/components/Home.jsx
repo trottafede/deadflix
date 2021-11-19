@@ -4,8 +4,7 @@ import Header from "./Header";
 import React from "react";
 import axios from "axios";
 import NoMovieFound from "./NoMovieFound";
-
-function Home() {
+export const Home = () => {
   const [title, setTitle] = React.useState("");
   const [ratingValue, setRatingValue] = React.useState(0);
   const [movieList, setMovieList] = React.useState([]);
@@ -93,6 +92,4 @@ function Home() {
       </div>
     </div>
   );
-}
-
-export default Home;
+};
