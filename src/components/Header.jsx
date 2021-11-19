@@ -4,7 +4,6 @@ import Rating from "react-rating";
 import React from "react";
 function Header({ title, handleSearch, handleRating, ratingValue }) {
   const handleClick = (rating) => {
-    rating = rating * 2;
     handleRating(rating);
   };
   return (
