@@ -1,11 +1,13 @@
 import "../css/MovieDetails.css";
 import axios from "axios";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+
 import SpinnerScreen from "./SpinnerScreen";
 export default function MovieDetails() {
   const [movie, setMovie] = React.useState();
   let { id } = useParams();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`;
@@ -19,7 +21,15 @@ export default function MovieDetails() {
   return movie ? (
     <div className="container">
       <div className="row">
-        <div className="col-lg-12 movieDetails">
+        <div className="col-lg-12 movieDetails ">
+          <div className="d-flex justify-content-end mt-3">
+            <button
+              className="btn btn-outline-danger  btn-sm"
+              onClick={() => navigate(-1)}
+            >
+              <i class="fas fa-long-arrow-alt-left"></i> back
+            </button>
+          </div>
           <h3>{movie.title}</h3>
           <p>{movie.original_title}</p>
           <div className="imgContainer">

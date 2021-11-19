@@ -4,6 +4,7 @@ import Header from "./Header";
 import React from "react";
 import axios from "axios";
 import NoMovieFound from "./NoMovieFound";
+
 export const Home = () => {
   const [title, setTitle] = React.useState("");
   const [ratingValue, setRatingValue] = React.useState(0);

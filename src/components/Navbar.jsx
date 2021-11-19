@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import UseIsOnline from "./UseIsOnline";
+
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark">
@@ -23,18 +25,23 @@ export default function Navbar() {
           </NavLink>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li>
-              <NavLink exact activeclasscame="active" to="/">
-                Home
-              </NavLink>
+              <NavLink to="/">Home</NavLink>
             </li>
 
             <li>
-              <NavLink activeclasscame="active" to="/about">
-                About
-              </NavLink>
+              <NavLink to="/about">About</NavLink>
+            </li>
+            <li>
+              <NavLink to="/contact">Contact</NavLink>
             </li>
           </ul>
         </div>
+
+        <ul className="navbar-nav  ">
+          <li>
+            <UseIsOnline />
+          </li>
+        </ul>
       </div>
     </nav>
   );
