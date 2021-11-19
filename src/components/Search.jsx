@@ -14,7 +14,7 @@ function Search({ title, handleSearch }) {
         value={title}
         id="searcher"
         placeholder="Search"
-        type="email"
+        type="text"
         className="form-control"
       />
     </div>

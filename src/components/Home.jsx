@@ -4,26 +4,30 @@ import Header from "./Header";
 import React from "react";
 import axios from "axios";
 import NoMovieFound from "./NoMovieFound";
+import SpinnerScreen from "./SpinnerScreen";
 
 function Home() {
   const [title, setTitle] = React.useState("");
   const [ratingValue, setRatingValue] = React.useState(0);
   const [movieList, setMovieList] = React.useState([]);
   const [pageNumber, setPageNumber] = React.useState(1);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
-    const url =
-      title.length <= 0
-        ? `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNumber}&with_watch_monetization_types=flatrate`
-        : `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${title}&page=${pageNumber}&include_adult=false`;
-    axios
-      .get(url)
-      .then(function (response) {
+    const url = !title
+      ? `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNumber}&with_watch_monetization_types=flatrate`
+      : `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${title}&page=${pageNumber}&include_adult=false`;
+
+    const getMovies = async () => {
+      try {
+        const response = await axios.get(url);
         setMovieList((movies) => [...movies, ...response.data.results]);
-      })
-      .catch(function (error) {
+        setIsLoading(false);
+      } catch (error) {
         if (error) throw error;
-      });
+      }
+    };
+    getMovies();
 
     window.addEventListener("scroll", handleScroll);
 
@@ -31,14 +35,11 @@ function Home() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [pageNumber, title]);
-  console.log(movieList);
 
   const handleSearch = (inputTitle) => {
     // setRatingValue(0);
     setMovieList([]);
     setPageNumber(1);
-    console.log(inputTitle);
-
     setTitle(inputTitle);
   };
 
@@ -52,8 +53,10 @@ function Home() {
     if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
       console.log("Sumando +1 a page");
       setPageNumber((number) => number + 1);
+      setIsLoading(true);
     }
   };
+
   return (
     <div>
       <Header
@@ -64,7 +67,8 @@ function Home() {
       />
       <div className="container">
         <div className="row">
-          {movieList.length > 0 ? (
+          {movieList.length === 0 && <NoMovieFound />}
+          {movieList &&
             movieList.map((movie) => {
               console.log("map en el return de movielist");
               return (
@@ -77,10 +81,8 @@ function Home() {
                   year={movie.release_date}
                 />
               );
-            })
-          ) : (
-            <NoMovieFound />
-          )}
+            })}
+          {isLoading && movieList.map(() => <SpinnerScreen />)}
         </div>
       </div>
     </div>

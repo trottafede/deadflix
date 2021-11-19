@@ -48,13 +48,15 @@ function Header({ title, handleSearch, handleRating, ratingValue }) {
       </div>
 
       <div className="ratingContainer">
-        <Rating
-          onClick={handleRating}
-          initialRating={ratingValue}
-          className="starColor"
-          emptySymbol="far fa-star fa-2x"
-          fullSymbol="fas fa-star fa-2x"
-        />
+        {!title && (
+          <Rating
+            onClick={handleRating}
+            initialRating={ratingValue}
+            className="starColor"
+            emptySymbol="far fa-star fa-2x"
+            fullSymbol="fas fa-star fa-2x"
+          />
+        )}
       </div>
     </header>
   );
