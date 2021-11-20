@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import UseIsOnline from "./UseIsOnline";
-
+import IsOnlineSpinner from "./IsOnlineSpinner";
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark">
@@ -18,7 +17,7 @@ export default function Navbar() {
           <i className="fas fa-skull-crossbones"></i>
         </button>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <NavLink draggable="false" exact activeclasscame="active" to="/">
+          <NavLink draggable="false" exact to="/">
             <h4>
               Deadflix<i className="fas fa-skull-crossbones"></i>
             </h4>
@@ -39,7 +38,7 @@ export default function Navbar() {
 
         <ul className="navbar-nav  ">
           <li>
-            <UseIsOnline />
+            <IsOnlineSpinner />
           </li>
         </ul>
       </div>

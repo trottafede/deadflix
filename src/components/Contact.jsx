@@ -48,7 +48,6 @@ const Contact = () => {
                 id="email"
                 placeholder="fede@gmail.com"
                 required
-                autocomplete="off"
               />
               <div className="valid-feedback">Looks good!</div>
             </div>

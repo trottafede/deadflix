@@ -22,7 +22,7 @@ export default function Movie({ id, title, overview, year, image }) {
     <SpinnerScreen />
   ) : (
     <div className="col-lg-2 col-md-3 col-sm-4 col-xs-12 movie">
-      <NavLink activeClassName="active" to={"pelicula/" + id}>
+      <NavLink to={"pelicula/" + id}>
         <h3>{title.length >= 14 ? title.substring(0, 18) : title}</h3>
         <div className="imgContainer">
           <img src={imageToRender} alt={title} />
