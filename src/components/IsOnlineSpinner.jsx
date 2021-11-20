@@ -9,7 +9,7 @@ export default function IsOnlineSpinner() {
           <span style={{ color: "green" }}>Online</span>
         </div>
       ) : (
-        <div class="spinner-grow text-danger" role="status">
+        <div className="spinner-grow text-danger" role="status">
           {window.scrollTo(0, 0)}
           <span className="visually-hidden">Loading...</span>
         </div>

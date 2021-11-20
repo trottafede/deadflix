@@ -27,7 +27,7 @@ export default function MovieDetails() {
               className="btn btn-outline-danger  btn-sm"
               onClick={() => navigate(-1)}
             >
-              <i class="fas fa-long-arrow-alt-left"></i> back
+              <i className="fas fa-long-arrow-alt-left"></i> back
             </button>
           </div>
           <h3>{movie.title}</h3>
