@@ -27,46 +27,52 @@ export default function MovieDetails() {
               className="btn btn-outline-danger  btn-sm"
               onClick={() => navigate(-1)}
             >
-              <i className="fas fa-long-arrow-alt-left"></i> back
+              <i className="fas fa-long-arrow-alt-left"></i> home
             </button>
           </div>
-          <h3>{movie.title}</h3>
-          <p>{movie.original_title}</p>
-          <div className="imgContainer">
-            <img
-              src={"https://image.tmdb.org/t/p/original" + movie.poster_path}
-              alt={movie.title}
-            />
+          <div className="row">
+            <div className="col-lg-4">
+              <h3>{movie.title}</h3>
+              <p>{movie.original_title}</p>
+              <div className="imgContainer">
+                <img
+                  src={
+                    "https://image.tmdb.org/t/p/original" + movie.poster_path
+                  }
+                  alt={movie.title}
+                />
+              </div>
+            </div>
+            <div className="col-lg-8  d-flex flex-column justify-content-center">
+              <p>
+                <em>Tagline: </em>
+                {movie.tagline}
+              </p>
+              <p>
+                <em>Genres:</em> {movie.genres.map((genre) => genre.name + " ")}
+              </p>
+              <p>
+                <em>Release date:</em> {movie.release_date} - <em>Status: </em>{" "}
+                {movie.status === "Released" ? (
+                  <span className="greenColor"> {movie.status} </span>
+                ) : (
+                  <span className="redColor"> {movie.status} </span>
+                )}
+              </p>
+              <p>
+                <em>Popularity:</em> {movie.popularity}
+              </p>
+              <p>
+                <em>
+                  Overview: <br />
+                </em>
+                {movie.overview}
+              </p>
+              <p>
+                <em>Budget:</em> {movie.budget}
+              </p>
+            </div>
           </div>
-          <p>
-            <em>Tagline: </em>
-            {movie.tagline}
-          </p>
-
-          <p>
-            <em>Genres:</em> {movie.genres.map((genre) => genre.name + " ")}
-          </p>
-
-          <p>
-            <em>Release date:</em> {movie.release_date} - <em>Status: </em>{" "}
-            {movie.status === "Released" ? (
-              <span className="greenColor"> {movie.status} </span>
-            ) : (
-              <span className="redColor"> {movie.status} </span>
-            )}
-          </p>
-          <p>
-            <em>Popularity:</em> {movie.popularity}
-          </p>
-          <p>
-            <em>
-              Overview: <br />
-            </em>
-            {movie.overview}
-          </p>
-          <p>
-            <em>Budget:</em> {movie.budget}
-          </p>
         </div>
       </div>
     </div>

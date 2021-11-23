@@ -12,7 +12,7 @@ export default function Movie({ id, title, overview, year, image }) {
   React.useEffect(() => {
     setTimeout(() => {
       handleLoad();
-    }, 1500);
+    }, 1000);
   }, []);
 
   const handleLoad = () => {

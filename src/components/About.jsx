@@ -18,6 +18,7 @@ export default function About() {
             <li>Bootstrap 5</li>
             <li>Axios for making the ajax call to the api</li>
             <li>The Movie DB API </li>
+            <li>Infinite Scroll in home page</li>
           </ul>
 
           <div className="imgContainer">

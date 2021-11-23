@@ -1,5 +1,5 @@
 import useIsOnline from "../hooks/useIsOnline";
-
+import React from "react";
 export default function IsOnlineSpinner() {
   const isOnline = useIsOnline();
   return (

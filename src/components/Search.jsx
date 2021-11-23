@@ -1,3 +1,4 @@
+import React from "react";
 function Search({ title, handleSearch }) {
   const handleInput = (e) => {
     handleSearch(e.target.value.toLowerCase());
